@@ -131,16 +131,48 @@ Learning units are structured data rather than hard-coded screens. The underlyin
 
 ---
 
-## 🗺️ Roadmap Overview
+## 🗺️ Roadmap Status
 
-1. **Stage 1:** Curriculum architecture + competency map *(Current focus)*
-2. **Stage 2:** Prototype first 30 minutes
-3. **Stage 3:** Design system + motion language
-4. **Stage 4:** Challenge engine
-5. **Stage 5:** Interactive builder/editor
-6. **Stage 6:** Adaptive mentor + assessment *(Depends on real usage data)*
-7. **Stage 7:** End-to-end capstone
-8. **Stage 8:** Beginner usability testing (5–10 zero-knowledge learners)
-9. **Stage 9:** Performance + accessibility polish
-10. **Stage 10:** Public launch
+1. **Stage 1: Curriculum Architecture & Competency Map** (COMPLETE)
+   * Domain contracts for `CONTENT_UNIT` and Competency Rungs verified.
+2. **Stage 2: First 30 Minutes Experience Prototype** (COMPLETE)
+   * Plays through the full 0–30 min onboarding loop using dynamic visual exercises.
+3. **Stage 3: Design System + Motion Language** (NEXT - UNIMPLEMENTED)
+4. **Stage 4: Challenge Engine** (UNIMPLEMENTED)
+5. **Stage 5: Interactive Builder / Editor** (UNIMPLEMENTED)
+6. **Stage 6: Adaptive Mentor + Assessment** (UNIMPLEMENTED)
+7. **Stage 7: End-to-End Capstone** (UNIMPLEMENTED)
+8. **Stage 8: Beginner Usability Testing** (UNIMPLEMENTED)
+9. **Stage 9: Performance + Accessibility Polish** (UNIMPLEMENTED)
+10. **Stage 10: Public Launch** (UNIMPLEMENTED)
+
+---
+
+## 🛠️ Implemented System Architecture (Stage 2 Status)
+
+The system currently implements a local client-side orchestration model to run the First 30 Minutes laboratory experience without speculative backend or state-management frameworks.
+
+### Implemented Routes & Components
+- `/` — Lab Entry point introducing the core laboratory transformation.
+- `/lab` — Orchestration shell rendering:
+  - `PhaseZeroContainer.tsx` — Linear state-machine tracking progression via local `stepIndex`.
+  - `ExerciseCanvas.tsx` — Consumes `PHASE_0_FIRST_THIRTY_MINUTES` raw content to render the 7 core visual interactive exercises.
+  - `ExplanationOverlay.tsx` — Implements the "Understand" beat, showing takeaways *after* discovery criteria are satisfied.
+
+### Interaction Architecture & Verification Metrics
+1. **0–3 min (Curiosity):** Scaling slider targeting button emphasis (Success: scale $\ge 1.5$).
+2. **3–8 min (Visual Hierarchy):** A/B structure option chooser (Success: clicks correct layout B).
+3. **8–13 min (Spacing & Alignment):** Spacing adjuster aligning padding and gap parameters to an 8px grid (Success: padding = 16px, gap = 8px).
+4. **13–18 min (Diagnose Flawed Interface):** Audit pin tool to mark contrast, hierarchy, and layout anomalies (Success: pins all 3 flaws).
+5. **18–23 min (Fix Interface):** Contextual sliders correcting diagnosed visual parameters (Success: targets met).
+6. **23–27 min (Build Tiny Screen):** Keyboard-accessible vertical item sorting tool (Success: order resolves to Avatar -> Name -> Bio -> Button).
+7. **27–30 min (Reflection):** Multiple choice check selecting design principle recognition.
+
+---
+
+## 🧪 Verification & Gate Checks
+- **Typechecking:** Passed (`npm run typecheck` / `tsc --noEmit` verified).
+- **Tests:** Stage 1 unit tests (`npm test` / `tsx --test`) fully verified.
+- **Production Build:** Next.js static output builds compiled successfully (`npm run build`).
+
 
