@@ -76,7 +76,7 @@ Mastery is cumulative across 4 primary tiers:
 
 ---
 
-## ⚙️ Core Architecture & Tech Stack
+##  Core Architecture & Tech Stack
 
 ### Frontend & Rendering Strategy
 * **Framework:** React / Next.js
