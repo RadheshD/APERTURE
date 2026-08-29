@@ -18,19 +18,17 @@ APERTURE is an immersive interactive design laboratory for complete beginners th
 
 ---
 
-## 🔄 The Learning Method
+## 🔄 Product Philosophy & Learning Methodology (Blueprint Vision)
 
+### The Learning Loop
 The core concept loop is explicitly:
 
 $$\text{See} \rightarrow \text{Interact} \rightarrow \text{Choose} \rightarrow \text{Discover} \rightarrow \text{Understand} \rightarrow \text{Practice} \rightarrow \text{Build} \rightarrow \text{Test} \rightarrow \text{Iterate} \rightarrow \text{Solve}$$
 
 This loop repeats per concept and scales from a short exercise to a full capstone project.
 
----
-
-## 🪜 Learner Model (13 Transformation Rungs)
-
-Mastery is cumulative across 4 primary tiers:
+### Learner Model (13 Transformation Rungs)
+Mastery is cumulative across 4 primary tiers. This serves as the foundation for the curriculum graph:
 
 1. **PERCEIVE**
    * 0 — I know nothing
@@ -50,127 +48,60 @@ Mastery is cumulative across 4 primary tiers:
    * 11 — I can complete a real project
    * 12 — I can approach new work alone
 
----
-
-## 📚 Curriculum Phases & First 30 Minutes
-
-### 7 Curriculum Phases
-* **Phase 0:** First Contact *(Highest Guidance)*
-* **Phase 1:** Train the Eye
-* **Phase 2:** Interface Detective
-* **Phase 3:** Interface Builder
-* **Phase 4:** UX Thinking
-* **Phase 5:** Real Product Design
-* **Phase 6:** Independent *(Lowest Guidance)*
-
-### First 30-Minute Intended Flow
-* `00–03 min`: Curiosity, first interaction, immediate success
-* `03–08 min`: Visual hierarchy
-* `08–13 min`: Spacing & alignment
-* `13–18 min`: Diagnose flawed interface
-* `18–23 min`: Fix interface
-* `23–27 min`: Build tiny screen
-* `27–30 min`: Reflection
-
-*Goal:* Genuine feeling of competence before Minute 5.
+### Engineering & Repository Principles
+* **Perception before vocabulary:** Visual interaction leads, terminology follows.
+* **Feedback over grades:** No arbitrary scores; focus on 'why' and 'what next'.
+* **Transfer over memorization:** True mastery requires applying concepts to unseen problems.
+* **Deterministic rule-based adaptation for MVP:** AI/ML is strictly deferred until real usage data exists.
+* **Structured content over hard-coded experiences:** UI renders dynamically from schemas.
+* **Minimal architecture:** Strict separation of concerns.
+* **No speculative infrastructure:** No Redis, Docker, state-management libraries, or CI/CD until concretely needed.
+* **No unnecessary files/dependencies:** A perfectly clean repository is a strict requirement.
+* **UI/UX quality is part of the product itself:** The application must embody the design principles it teaches.
 
 ---
 
-##  Core Architecture & Tech Stack
+## 🏗️ Major Product Architecture (Actual Implementation)
 
-### Frontend & Rendering Strategy
-* **Framework:** React / Next.js
-* **Rendering Split:**
-  * **~90% DOM / CSS / Motion:** Standard interactive UI elements, layout exercises, and challenges.
-  * **~10% WebGL / Canvas:** Reserved specifically for spatial navigation experiences (e.g., Skill Graph & Project Workspace).
+The current implementation is client-side/local and does not yet include backend persistence. It focuses exclusively on the foundational domain schemas, engine infrastructure, and initial prototypes.
 
-### Backend & Storage (Provisional)
-* **API Layer:** FastAPI (Python) — *Provisional choice for AI/Adaptive integration*
-* **Persistence:** PostgreSQL — *Durable storage for learner state, attempts, and projects*
+The architecture is strictly separated into:
 
-### Architectural Constraints
-* **No Speculative Infrastructure:** No Redis, Zustand, Docker, or CI/CD pipelines until concrete runtime requirements emerge.
-* **Modular Architecture:** Clear system boundaries between Interaction Engine, Learner State & Assessment, AI Mentor Layer, and Content System.
+1. **Domain / Content System (`src/domain`)**
+   * Acts as the single source of truth for the curriculum.
+   * Defines strict schema contracts (`ContentUnit`, `CompetencyNode`).
+   * Content is structured data, detailing objectives, practice states, mistakes, and hints.
 
----
+2. **Challenge Engine (`src/engine`)**
+   * A deterministic engine infrastructure milestone that processes learner interactions. It is infrastructure that later stages can consume, rather than a finished learner-facing adaptive assessment system.
+   * **Assessment:** Evaluates attempt correctness and dynamically generates a 5-part `FeedbackSequence` by combining live evidence with authored domain content. Does *not* evaluate mastery.
+   * **Mastery:** Evaluates transfer requirements and competency graduation rules.
+   * **Learner State:** Immutable pure functions tracking hints, retries, and competency evidence.
+   * **Scaffolding:** Dynamically computes UI constraints (hints, limits) based on learner velocity.
+   * **Router:** Deterministically decides the next action (Proceed, Retry, Recovery, Transfer) using explicit configuration thresholds.
+   * **Orchestrator:** A pure composition layer uniting the primitives.
+   * **Telemetry:** An event abstraction contract currently decoupled from persistence.
 
-## 📦 Content Architecture (`CONTENT_UNIT`)
-
-Learning units are structured data rather than hard-coded screens. The underlying contract:
-* `objective`
-* `prerequisite`
-* `initial_experience`
-* `explanation`
-* `guided_practice`
-* `independent_practice`
-* `common_mistakes`
-* `hints`
-* `recovery_path`
-* `assessment_criteria`
-* `mastery_criteria`
-* `next_recommended`
+3. **Interaction / Runtime Layer (`src/app`, `src/components`)**
+   * Consumes the `ContentUnit` schemas to render the interactive UI laboratory.
+   * Implements the Stage 2 First 30-Minute prototype.
+   * Includes the Stage 3 Design System and Motion Language.
 
 ---
 
-## 🚀 MVP Scope
+## 🗺️ Implementation Status & Future Roadmap
 
-### In Scope for MVP
-* First-Contact Experience (Phase 0)
-* Train-the-Eye Challenges (Phase 1)
-* Interface Detective + Builder (Phases 2–3)
-* One Guided Mini-Project
-* Rule-Based Adaptation (fixed thresholds, templated drills, deterministic branching)
-* One End-to-End Capstone Brief
+The roadmap is derived directly from the Master Product Blueprint.
 
-### Excluded from MVP
-* Full learned adaptive AI model (comes after real usage data)
-* Social / Community features & Marketplaces
-* Certificates
-* Full Phase 4–6 breadth
-* Sound design system & Native mobile apps
-
----
-
-## 🗺️ Roadmap Status
-
-1. **Stage 1: Curriculum Architecture & Competency Map** (COMPLETE)
-   * Domain contracts for `CONTENT_UNIT` and Competency Rungs verified.
-2. **Stage 2: First 30 Minutes Experience Prototype** (COMPLETE)
-   * Plays through the full 0–30 min onboarding loop using dynamic visual exercises.
-3. **Stage 3: Design System + Motion Language** (NEXT - UNIMPLEMENTED)
-4. **Stage 4: Challenge Engine** (UNIMPLEMENTED)
-5. **Stage 5: Interactive Builder / Editor** (UNIMPLEMENTED)
-6. **Stage 6: Adaptive Mentor + Assessment** (UNIMPLEMENTED)
-7. **Stage 7: End-to-End Capstone** (UNIMPLEMENTED)
-8. **Stage 8: Beginner Usability Testing** (UNIMPLEMENTED)
-9. **Stage 9: Performance + Accessibility Polish** (UNIMPLEMENTED)
-10. **Stage 10: Public Launch** (UNIMPLEMENTED)
-
----
-
-## 🛠️ Implemented System Architecture (Stage 2 Status)
-
-The system currently implements a local client-side orchestration model to run the First 30 Minutes laboratory experience without speculative backend or state-management frameworks.
-
-### Implemented Routes & Components
-- `/` — Lab Entry point introducing the core laboratory transformation.
-- `/lab` — Orchestration shell rendering:
-  - `PhaseZeroContainer.tsx` — Linear state-machine tracking progression via local `stepIndex`.
-  - `ExerciseCanvas.tsx` — Consumes `PHASE_0_FIRST_THIRTY_MINUTES` raw content to render the 7 core visual interactive exercises.
-  - `ExplanationOverlay.tsx` — Implements the "Understand" beat, showing takeaways *after* discovery criteria are satisfied.
-
-### Interaction Architecture & Verification Metrics
-1. **0–3 min (Curiosity):** Scaling slider targeting button emphasis (Success: scale $\ge 1.5$).
-2. **3–8 min (Visual Hierarchy):** A/B structure option chooser (Success: clicks correct layout B).
-3. **8–13 min (Spacing & Alignment):** Spacing adjuster aligning padding and gap parameters to an 8px grid (Success: padding = 16px, gap = 8px).
-4. **13–18 min (Diagnose Flawed Interface):** Audit pin tool to mark contrast, hierarchy, and layout anomalies (Success: pins all 3 flaws).
-5. **18–23 min (Fix Interface):** Contextual sliders correcting diagnosed visual parameters (Success: targets met).
-6. **23–27 min (Build Tiny Screen):** Keyboard-accessible vertical item sorting tool (Success: order resolves to Avatar -> Name -> Bio -> Button).
-7. **27–30 min (Reflection):** Multiple choice check selecting design principle recognition.
-
----
-
-## 🧪 Verification & Gate Checks
-- **Typechecking:** Passed (`npm run typecheck` / `tsc --noEmit` verified).
-- **Tests:** Stage 1 unit tests (`npm test` / `tsx --test`) fully verified.
-- **Production Build:** Next.js static output builds compiled successfully (`npm run build`).
+| Stage | Blueprint name | Status | Evidence / current state |
+|-------|----------------|--------|--------------------------|
+| **1** | Curriculum architecture + competency map | ✅ Complete | Domain contracts and 13-rung graph exist in `src/domain/` (commit `d573acd`). |
+| **2** | Prototype the first 30 minutes | ✅ Complete | React canvas/UI prototype built for Phase 0 (commit `e09f640`). |
+| **3** | Design system + motion language | ✅ Complete | Visual foundation and micro-interactions established (commit `9a074db`). |
+| **4** | Challenge engine | ✅ Complete | Deterministic evaluation/routing infrastructure built (commit `2560bd3`). |
+| **5** | Interactive builder / editor | 🚧 Current / In Progress | (Currently pending implementation) |
+| **6** | Adaptive mentor + assessment | 🔒 Deferred | Deferred because the Blueprint requires real usage data before introducing ML. |
+| **7** | End-to-end capstone | ⏳ Planned | |
+| **8** | Beginner usability testing | ⏳ Planned | |
+| **9** | Performance + accessibility polish | ⏳ Planned | |
+| **10** | Public launch | ⏳ Planned | |
