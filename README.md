@@ -100,7 +100,7 @@ The roadmap is derived directly from the Master Product Blueprint.
 | **3** | Design system + motion language | ✅ Complete | Visual foundation and micro-interactions established (commit `9a074db`). |
 | **4** | Challenge engine | ✅ Complete | Deterministic evaluation/routing infrastructure built (commit `2560bd3`). |
 | **5** | Interactive builder / editor | 🚧 Current / In Progress | (Currently pending implementation) |
-| **6** | Adaptive mentor + assessment | 🔒 Deferred | Deferred because the Blueprint requires real usage data before introducing ML. |
+| **6** | Adaptive mentor + assessment | 🔒 Deferred | 🔒 Deferred |
 | **7** | End-to-end capstone | ⏳ Planned | |
 | **8** | Beginner usability testing | ⏳ Planned | |
 | **9** | Performance + accessibility polish | ⏳ Planned | |
