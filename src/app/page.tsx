@@ -26,21 +26,39 @@ export default function Home() {
         An interactive design laboratory that teaches complete beginners to see, think, and build like designers.
       </p>
       
-      <Link 
-        href="/lab"
-        style={{
-          display: 'inline-block',
-          padding: 'calc(var(--grid-unit) * 2) calc(var(--grid-unit) * 4)',
-          backgroundColor: 'var(--foreground)',
-          color: 'var(--background)',
-          textDecoration: 'none',
-          fontWeight: 500,
-          borderRadius: 'calc(var(--grid-unit) * 1)',
-          transition: 'transform 0.2s ease, opacity 0.2s ease'
-        }}
-      >
-        Begin First Contact
-      </Link>
+      <div style={{ display: 'flex', gap: 'calc(var(--grid-unit) * 2)', flexWrap: 'wrap', justifyContent: 'center' }}>
+        <Link
+          href="/lab"
+          style={{
+            display: 'inline-block',
+            padding: 'calc(var(--grid-unit) * 2) calc(var(--grid-unit) * 4)',
+            backgroundColor: 'var(--foreground)',
+            color: 'var(--background)',
+            textDecoration: 'none',
+            fontWeight: 500,
+            borderRadius: 'calc(var(--grid-unit) * 1)',
+            transition: 'transform 0.2s ease, opacity 0.2s ease'
+          }}
+        >
+          Begin First Contact
+        </Link>
+        <Link
+          href="/builder"
+          style={{
+            display: 'inline-block',
+            padding: 'calc(var(--grid-unit) * 2) calc(var(--grid-unit) * 4)',
+            backgroundColor: 'transparent',
+            color: 'var(--foreground)',
+            border: '1px solid rgba(255, 255, 255, 0.2)',
+            textDecoration: 'none',
+            fontWeight: 500,
+            borderRadius: 'calc(var(--grid-unit) * 1)',
+            transition: 'transform 0.2s ease, opacity 0.2s ease'
+          }}
+        >
+          Enter the Builder
+        </Link>
+      </div>
     </main>
   );
 }
