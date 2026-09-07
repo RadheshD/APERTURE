@@ -91,7 +91,6 @@ The architecture is strictly separated into:
 
 ## 🗺️ Implementation Status & Future Roadmap
 
-The roadmap is derived directly from the Master Product Blueprint.
 
 | Stage | Blueprint name | Status | Evidence / current state |
 |-------|----------------|--------|--------------------------|
