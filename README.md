@@ -7,7 +7,7 @@ APERTURE is an immersive interactive design laboratory for complete beginners th
 ## The Core Transformation
 
 - **From:** “I know absolutely nothing about UI/UX.”
-- **To:** “I can independently approach and complete a real design problem.”
+- **To:** “I can independently approach and complete a real design problems.”
 
 ### What APERTURE Rejects
 * Video-course / video-lecture behavior
