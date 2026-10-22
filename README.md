@@ -1,6 +1,6 @@
 # APERTURE
 
-APERTURE is an immersive interactive design laboratory for complete beginners that teaches them to see, think, and build like designers by training perception before vocabulary.
+The APERTURE is an immersive interactive design laboratory for complete beginners that teaches them to see, think, and build like designers by training perception before vocabulary.
 
 ---
 
